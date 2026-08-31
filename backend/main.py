@@ -14,8 +14,6 @@ from config import settings
 from database import Base, engine
 from routers import dashboard, evaluate
 
-# Create tables on startup if they don't exist yet. For anything beyond a hackathon/demo,
-# swap this for Alembic migrations so schema changes are tracked and reversible.
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

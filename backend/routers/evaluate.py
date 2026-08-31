@@ -1,8 +1,3 @@
-"""
-The core endpoint: takes a prompt, runs it through the full ControlPlane pipeline
-(route -> call model -> check facts -> check privacy/safety -> score -> decide),
-stores the result, and returns it.
-"""
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session

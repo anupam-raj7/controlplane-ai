@@ -1,10 +1,3 @@
-"""
-Combines performance, cost, and responsibility signals into a single 0-100 risk score, and
-maps that score to a decision: allow / verify / human_review / block.
-
-Higher score = higher risk. The weighting below is a reasonable starting point for a demo —
-in a real deployment these weights would be tuned against labeled incident data.
-"""
 
 from config import settings
 

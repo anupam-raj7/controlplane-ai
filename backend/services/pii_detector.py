@@ -1,19 +1,3 @@
-"""
-Detects likely personal information (PII) in text using regex patterns.
-
-This is a lightweight stand-in for Microsoft Presidio, chosen so the project runs instantly
-with no model downloads. To upgrade to real Presidio:
-
-    pip install presidio-analyzer presidio-anonymizer
-    python -m spacy download en_core_web_lg
-
-    from presidio_analyzer import AnalyzerEngine
-    analyzer = AnalyzerEngine()
-    results = analyzer.analyze(text=text, language="en")
-
-`detect_pii` below returns the same shape (a list of entity dicts + a count), so swapping the
-implementation doesn't require touching risk_scorer.py or main.py.
-"""
 
 import re
 

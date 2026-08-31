@@ -1,9 +1,3 @@
-"""
-Chooses which model to call based on prompt complexity, then calls it through LiteLLM.
-
-LiteLLM gives one unified interface across providers (OpenAI, Anthropic, etc.), so swapping
-or adding a provider only means changing the model name string, not the calling code.
-"""
 
 import os
 import time
@@ -12,10 +6,6 @@ import litellm
 
 from config import settings
 
-# LiteLLM reads provider credentials from environment variables (GROQ_API_KEY,
-# OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY, etc.) rather than a single shared
-# argument, so we mirror whatever is set in .env into the process environment once at
-# import time. This means you only ever need to set the ONE key you're actually using.
 for _env_name, _value in [
     ("OPENAI_API_KEY", settings.openai_api_key),
     ("ANTHROPIC_API_KEY", settings.anthropic_api_key),
@@ -25,8 +15,6 @@ for _env_name, _value in [
     if _value:
         os.environ[_env_name] = _value
 
-# A simple, explainable complexity heuristic. In production you'd likely swap this for a small
-# classifier, but a heuristic is transparent and good enough to demonstrate routing behavior.
 COMPLEXITY_KEYWORDS = [
     "analyze",
     "compare",

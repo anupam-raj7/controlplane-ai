@@ -1,7 +1,3 @@
-"""
-Read-only endpoints the frontend dashboard calls to show interaction history, cost trends,
-and safety incidents.
-"""
 
 from collections import Counter
 

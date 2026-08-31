@@ -1,11 +1,3 @@
-"""
-Flags potentially unsafe or policy-violating content.
-
-This is a lightweight keyword-based stand-in so the project runs with no external calls or
-model downloads. To upgrade to a real classifier, swap `classify_safety` for a call to a
-hosted moderation API (e.g. OpenAI's moderation endpoint) or a HuggingFace model such as
-`unitary/toxic-bert` — keep the same return shape so nothing else needs to change.
-"""
 
 HIGH_RISK_TERMS = ["kill", "bomb", "weapon", "attack", "exploit vulnerability", "hack into"]
 MEDIUM_RISK_TERMS = ["hate", "discriminate", "harass", "illegal drug", "self-harm", "sucide", "cheating"]

@@ -1,17 +1,6 @@
-"""
-Checks a model's response against a small "trusted document" store using simple vector
-similarity, and estimates a hallucination-risk score.
-
-This is intentionally lightweight (word-overlap vectors, no external embedding API) so the
-project runs with zero setup. Swap `_embed` for a real embedding model (OpenAI embeddings,
-sentence-transformers, etc.) and `TRUSTED_DOCS` for a real knowledge base / pgvector table
-for production use — nothing else in the pipeline needs to change.
-"""
 
 import numpy as np
 
-# A tiny example knowledge base. In production this would be loaded from your company's
-# HR policies, product docs, support macros, etc., and stored in a vector database.
 TRUSTED_DOCS = [
     "Employees are entitled to 20 days of paid annual leave per calendar year.",
     "All expense reports over $500 require manager approval before reimbursement.",
@@ -59,7 +48,6 @@ def check_against_knowledge_base(response_text: str) -> dict:
             best_score = similarity
             best_doc = doc
 
-    # Low similarity to anything in the trusted docs -> higher hallucination risk.
     hallucination_risk = round((1 - best_score) * 100, 1)
 
     return {

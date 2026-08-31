@@ -38,12 +38,12 @@ class Interaction(Base):
     estimated_cost_usd = Column(Float, default=0.0)
 
     # Responsibility
-    pii_detected = Column(Integer, default=0)  # count of PII entities found
-    safety_flag = Column(String, default="none")  # none | low | medium | high
+    pii_detected = Column(Integer, default=0)  
+    safety_flag = Column(String, default="none") 
 
     # Overall outcome
     risk_score = Column(Integer, nullable=False)
-    decision = Column(String, nullable=False)  # allow | verify | human_review | block
+    decision = Column(String, nullable=False) 
 
 
 class AuditLog(Base):

@@ -30,7 +30,7 @@ COMPLEXITY_KEYWORDS = [
 
 
 def pick_model(prompt: str, force_model: str | None = None) -> str:
-    """Return the model name to use for this prompt."""
+    
     if force_model:
         return force_model
 
@@ -43,11 +43,7 @@ def pick_model(prompt: str, force_model: str | None = None) -> str:
 
 
 def call_model(prompt: str, model: str) -> dict:
-    """
-    Calls the chosen model via LiteLLM and returns the response text, token counts, an
-    estimated cost, and latency. Falls back to a clearly-labeled stub response if no API key
-    is configured, so the rest of the pipeline can still be demoed without live credentials.
-    """
+    
     has_any_key = any(
         [settings.openai_api_key, settings.anthropic_api_key, settings.groq_api_key, settings.gemini_api_key]
     )
